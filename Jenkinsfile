@@ -21,7 +21,7 @@ pipeline{
         }
         stage('deploy'){
            steps{
-               withCredentials([usernameColonPassword(credentialsId: 'tomcat_credentials', variable: 'secretpassword')]) 
+               withCredentials([usernameColonPassword(credentialsId: 'tomcat_credentials', variable: 'tomcat_credentials')]) 
                {
                 sh "curl -v -u admin:admin -T /var/lib/jenkins/workspace/pipelinewebsite/target/spring3-mvc-maven-xml-hello-world-1.0-SNAPSHOT.war 'http://13.233.5.188:8080/manager/text/deploy?path=/jenkins_deploy&update=true'"
                 }
